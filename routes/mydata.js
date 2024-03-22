@@ -1,9 +1,9 @@
-import { Router } from 'express';
-var router = Router();
+var express = require('express');
+const newLocal = express.Router();
 
 /* GET the page. */
-router.get('/', function(req, res, next) {
+newLocal.get('/', function(req, res, next) {
   res.render('mydata', { title: 'Yogesh' });
 });
 
-export default router;
+module.exports = newLocal;
