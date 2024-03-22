@@ -1,9 +1,9 @@
 var express = require('express');
-const newLocal = express.Router();
+var router = express.Router();
 
 /* GET the page. */
-newLocal.get('/', function(req, res, next) {
-  res.render('mydata', { title: 'Yogesh' });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Yogesh' });
 });
 
-module.exports = newLocal;
+module.exports = router;
