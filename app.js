@@ -6,7 +6,14 @@ var logger = require('morgan');
 
 var mydataRouter = require('./routes/mydata');
 var usersRouter = require('./routes/users');
-var computationRouter = require('./routes/computation');
+
+// Add error handling for computationRouter
+var computationRouter;
+try {
+  computationRouter = require('./routes/computation');
+} catch (error) {
+  console.error("Error loading computationRouter:", error);
+}
 
 var app = express();
 
@@ -22,7 +29,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/mydata', mydataRouter);
 app.use('/users', usersRouter);
-app.use('/computation',computationRouter);
+
+// Mount computationRouter if it was successfully loaded
+if (computationRouter) {
+  app.use('/computation', computationRouter);
+} else {
+  console.error("computationRouter not loaded. Check if the file exists and exports the router.");
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
