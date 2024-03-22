@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET this page  */
+/* GET the page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Yogesh' });
+  res.render('mydata', { title: 'Yogesh' });
 });
 
-module.exports = router;
+module.exports = router;
